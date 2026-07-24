@@ -589,3 +589,27 @@ img {
     font-size: 1.6rem;
   }
 }
+
+.floating-badge {
+  position: fixed;
+  bottom: 24px; /* Separación desde abajo */
+  right: 24px;  /* Separación desde la derecha */
+  z-index: 9999;
+  
+  /* Estilo visual */
+  background-color: #000000; /* Color oscuro tipo terminal/negocio */
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 50px; /* Forma de píldora */
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease; /* Animación suave */
+}
+
+/* Efecto al pasar el mouse */
+.floating-badge:hover {
+  transform: translateY(-3px);
+}
