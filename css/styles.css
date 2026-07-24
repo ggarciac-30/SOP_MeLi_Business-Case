@@ -239,6 +239,11 @@ img {
 /* --- Seccion Hero (Inicio) --- */
 .hero-section {
   padding-top: var(--espacio-md);
+  /* Agregamos Flexbox para centrar todo el contenedor */
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center; 
 }
 
 .badge {
@@ -255,13 +260,15 @@ img {
 .hero-section h1 {
   font-size: 2.2rem;
   margin-bottom: var(--espacio-sm);
+  max-width: 900px; /* Mantiene el titulo legible sin ser infinito */
 }
 
 .hero-subtitle {
   color: var(--color-texto-secundario);
   font-size: 1.05rem;
-  max-width: 600px;
-  margin-bottom: var(--espacio-md);
+  max-width: 800px; /* Lo ampliamos de 600px a 800px */
+  /* El 'auto' en los lados es el truco para centrar el bloque horizontalmente */
+  margin: 0 auto var(--espacio-md) auto; 
 }
 
 .btn-primary {
@@ -272,6 +279,8 @@ img {
   border-radius: var(--radio-borde);
   font-weight: 600;
   transition: background-color 0.15s;
+  /* Aseguramos que el boton no ocupe todo el ancho si esta en flex */
+  align-self: center; 
 }
 
 .btn-primary:hover {
