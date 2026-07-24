@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caso S&OP — Mercado Envíos — Capacidad FC MXXX1</title>
+
+  <!-- ============================================================ -->
+  <!-- Aqui se conecta el archivo de estilos. Si renombras el CSS,  -->
+  <!-- actualiza esta ruta.                                         -->
+  <!-- ============================================================ -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Tipografia: si quieres cambiarla, reemplaza este link de Google Fonts
+       y actualiza la variable --fuente-principal en css/styles.css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- MENU LATERAL (SIDEBAR)                                        -->
+  <!-- Para agregar una nueva seccion al menu:                       -->
+  <!-- 1) Copia un <a> completo aqui abajo                           -->
+  <!-- 2) Cambia el href="#id" para que apunte al id de tu seccion   -->
+  <!-- 3) Cambia el texto visible                                    -->
+  <!-- 4) Crea la seccion correspondiente mas abajo con ese mismo id -->
+  <!-- ============================================================ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">📦</span>
+      <span class="sidebar-title">Caso S&amp;OP</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- Cada <a> es un item del menu. data-section debe coincidir con el id de la seccion -->
+      <a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a>
+      <a href="#objetivo" class="nav-link" data-section="objetivo">Objetivo</a>
+      <a href="#dataset" class="nav-link" data-section="dataset">Dataset</a>
+      <a href="#calidad-datos" class="nav-link" data-section="calidad-datos">Calidad de datos</a>
+      <a href="#kpis" class="nav-link" data-section="kpis">KPIs</a>
+      <a href="#hallazgos" class="nav-link" data-section="hallazgos">Hallazgos</a>
+      <a href="#graficos" class="nav-link" data-section="graficos">Gráficos</a>
+      <a href="#conclusiones" class="nav-link" data-section="conclusiones">Conclusiones</a>
+      <a href="#recomendaciones" class="nav-link" data-section="recomendaciones">Recomendaciones</a>
+    </nav>
+  </aside>
+
+  <!-- Boton hamburguesa: solo se ve en movil (controlado en el CSS con @media) -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+
+  <!-- ============================================================ -->
+  <!-- CONTENIDO PRINCIPAL                                           -->
+  <!-- Cada <section> de aqui en adelante es una pantalla del menu.  -->
+  <!-- El id de cada <section> debe coincidir EXACTO con el          -->
+  <!-- data-section del link correspondiente en el sidebar.          -->
+  <!-- ============================================================ -->
+  <main class="main-content">
+
+    <!-- ===== SECCION: INICIO ===== -->
+    <section id="inicio" class="page-section hero-section">
+      <!-- EDITA AQUI: titulo principal de la portada -->
+      <span class="badge">Analista Senior S&amp;OP · Mercado Envíos</span>
+      <h1>Capacidad y staffing del Fulfillment Center MXXX1</h1>
+      <!-- EDITA AQUI: subtitulo/resumen de una linea -->
+      <p class="hero-subtitle">
+        Análisis de capacidad de almacenaje, proyección de faltante y dimensionamiento de staffing,
+        construido con Python, SQL y Power BI sobre datos reales de un caso de negocio.
+      </p>
+      <a href="#objetivo" class="btn-primary">Ver el análisis ↓</a>
+    </section>
+
+    <!-- ===== SECCION: OBJETIVO ===== -->
+    <section id="objetivo" class="page-section">
+      <h2 class="section-title">Objetivo del análisis</h2>
+      <!-- BLOQUE DE TEXTO: puedes duplicar este <div class="text-block"> las veces que quieras -->
+      <div class="text-block">
+        <p>
+          Determinar si el Fulfillment Center MXXX1 cuenta con capacidad de almacenaje suficiente
+          para absorber el crecimiento de stock proyectado, y dimensionar el staffing (personas y
+          mesas de packing) necesario para cubrir el pico de demanda futura.
+        </p>
+      </div>
+
+      <!-- CALLOUT: bloque destacado para preguntas/decisiones de negocio. Duplica este div para otro callout -->
+      <div class="callout callout-info">
+        <span class="callout-icon">🎯</span>
+        <div>
+          <strong>Decisión de negocio detrás del análisis</strong>
+          <p>¿Cuándo, y bajo qué condiciones, el FC se queda sin espacio de almacenaje frente al
+             crecimiento de inventario esperado?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECCION: DATASET ===== -->
+    <section id="dataset" class="page-section">
+      <h2 class="section-title">Dataset</h2>
+      <div class="text-block">
+        <p>Dos fuentes de datos, tratadas como tramos consecutivos de una misma línea de tiempo:</p>
+      </div>
+
+      <!-- GRID DE CARDS: para agregar otra fuente de datos, duplica un .card completo dentro de este div -->
+      <div class="card-grid">
+        <div class="card">
+          <h3>BD_1 — Histórico</h3>
+          <p>30 días (27-may a 25-jun-2026). 61 categorías de producto, dimensiones, stock diario,
+             venta y horas-hombre de packing.</p>
+        </div>
+        <div class="card">
+          <h3>BD_2 — Forecast</h3>
+          <p>30 días (26-jun a 25-jul-2026). Forecast de stock total agregado, sin desglose por
+             categoría ni dimensiones.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECCION: CALIDAD DE DATOS ===== -->
+    <section id="calidad-datos" class="page-section">
+      <h2 class="section-title">Calidad de datos</h2>
+
+      <!-- ALERTA: usa esta estructura para mostrar hallazgos de calidad de datos.
+           Cambia la clase "alerta-amarilla" por "alerta-roja" o "alerta-verde" segun la severidad -->
+      <div class="alerta alerta-amarilla">
+        <strong>ITEM no es una llave única</strong>
+        <p>La columna representa una categoría, no un SKU individual — varias filas comparten
+           fecha y categoría. Todo el análisis está a nivel categoría, no producto individual.</p>
+      </div>
+
+      <div class="alerta alerta-amarilla">
+        <strong>41 registros con categoría nula (0.8%)</strong>
+        <p>Se conservan en los cálculos de volumen/stock (sí representan inventario real) y se
+           etiquetan como "Sin categoría" solo en los desgloses por categoría.</p>
+      </div>
+
+      <div class="alerta alerta-verde">
+        <strong>Sin duplicados exactos ni valores imposibles</strong>
+        <p>No se encontraron dimensiones negativas, ni filas 100% duplicadas en el dataset histórico.</p>
+      </div>
+    </section>
+
+    <!-- ===== SECCION: KPIs ===== -->
+    <section id="kpis" class="page-section">
+      <h2 class="section-title">KPIs principales</h2>
+
+      <!-- Este contenedor se llena AUTOMATICAMENTE desde data/resultados.json (bloque "kpis").
+           Para agregar un KPI nuevo, no edites aqui: agrega un objeto en el array "kpis" del JSON.
+           Ver script.js -> funcion renderKPIs() -->
+      <div class="kpi-grid" id="kpiContainer">
+        <!-- Las tarjetas de KPI se insertan aqui via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ===== SECCION: HALLAZGOS ===== -->
+    <section id="hallazgos" class="page-section">
+      <h2 class="section-title">Hallazgos</h2>
+
+      <!-- Se llena automaticamente desde data/resultados.json (bloque "hallazgos") -->
+      <div id="hallazgosContainer">
+        <!-- Las tarjetas de hallazgo se insertan aqui via JavaScript -->
+      </div>
+
+      <!-- TIMELINE: se llena automaticamente desde el bloque "timeline" del JSON -->
+      <h3 class="subsection-title">Línea de tiempo del hallazgo principal</h3>
+      <div class="timeline" id="timelineContainer">
+        <!-- Los puntos de la timeline se insertan aqui via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ===== SECCION: GRAFICOS ===== -->
+    <section id="graficos" class="page-section">
+      <h2 class="section-title">Gráficos</h2>
+      <div class="text-block">
+        <p>Contenedores listos para insertar gráficas generadas en Python (exportadas como imagen) o
+           gráficas interactivas con Chart.js / Plotly. Cada contenedor tiene el comentario exacto
+           de dónde pegar tu código.</p>
+      </div>
+
+      <!--
+        ============================================================
+        CONTENEDOR PARA GRAFICA DE CHART.JS
+        ============================================================
+        Para usar Chart.js:
+        1) Agrega este script en el <head> de este archivo:
+           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        2) En js/script.js, busca el comentario "AQUI VA TU GRAFICA DE CHART.JS"
+        3) Crea tu grafica con: new Chart(document.getElementById('graficoCapacidad'), { ...tu config... })
+      -->
+      <div class="card chart-container">
+        <h3>Capacidad instalada implícita (M3)</h3>
+        <!-- Este <canvas> es el que usa Chart.js para dibujar -->
+        <canvas id="graficoCapacidad"></canvas>
+        <!-- Si prefieres usar una imagen exportada de Python en vez de Chart.js,
+             borra el <canvas> de arriba y usa esto en su lugar:
+             <img src="images/chart_capacidad.png" alt="Capacidad instalada implicita" /> -->
+      </div>
+
+      <!--
+        ============================================================
+        CONTENEDOR PARA GRAFICA DE PLOTLY
+        ============================================================
+        Para usar Plotly:
+        1) Agrega este script en el <head>:
+           <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+        2) En js/script.js, busca el comentario "AQUI VA TU GRAFICA DE PLOTLY"
+        3) Crea tu grafica con: Plotly.newPlot('graficoProyeccion', datos, layout)
+      -->
+      <div class="card chart-container">
+        <h3>Proyección de faltante de capacidad</h3>
+        <!-- Este <div> vacio es el que usa Plotly para dibujar -->
+        <div id="graficoProyeccion"></div>
+      </div>
+
+      <!-- TABLA: se llena automaticamente desde el bloque "tabla_sensibilidad" del JSON -->
+      <div class="card">
+        <h3>Tabla de sensibilidad — escenarios de capacidad</h3>
+        <table class="data-table" id="tablaSensibilidad">
+          <!-- encabezado y filas se insertan via JavaScript -->
+        </table>
+      </div>
+
+      <!-- Para agregar OTRO contenedor de grafica, duplica cualquiera de los dos bloques
+           .chart-container de arriba y cambia el id del canvas o del div -->
+    </section>
+
+    <!-- ===== SECCION: CONCLUSIONES ===== -->
+    <section id="conclusiones" class="page-section">
+      <h2 class="section-title">Conclusiones</h2>
+      <!-- Se llena automaticamente desde el bloque "conclusiones" del JSON (es una lista simple) -->
+      <ul class="simple-list" id="conclusionesContainer">
+        <!-- Los items se insertan aqui via JavaScript -->
+      </ul>
+    </section>
+
+    <!-- ===== SECCION: RECOMENDACIONES ===== -->
+    <section id="recomendaciones" class="page-section">
+      <h2 class="section-title">Recomendaciones</h2>
+
+      <!-- CALLOUT de recomendaciones: se llena automaticamente desde el bloque "recomendaciones" del JSON -->
+      <div class="callout callout-recomendacion">
+        <span class="callout-icon">✅</span>
+        <div>
+          <strong>Próximos pasos accionables</strong>
+          <ul class="simple-list" id="recomendacionesContainer">
+            <!-- Los items se insertan aqui via JavaScript -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIE DE PAGINA -->
+    <footer class="page-footer">
+      <p>Caso de negocio resuelto de forma independiente. Código y datos completos en el repositorio.</p>
+      <!-- EDITA AQUI: pon tus links reales -->
+      <div class="footer-links">
+        <a href="#" target="_blank" rel="noopener">Ver repositorio →</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- Aqui se conecta el archivo de JavaScript. Debe ir AL FINAL    -->
+  <!-- del body para que el HTML ya exista cuando el script corra.  -->
+  <!-- ============================================================ -->
+  <script src="js/script.js"></script>
+</body>
+</html>
