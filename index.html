@@ -131,8 +131,7 @@
         <span class="callout-icon">🎯</span>
         <div>
           <strong>Decisión de negocio detrás del análisis</strong>
-          <p>¿Cuándo, y bajo qué condiciones, el FC se queda sin espacio de almacenaje frente al
-             crecimiento de inventario esperado?</p>
+          <p>Determinar cuándo y cómo el inventario proyectado superará la capacidad del FC.</p>
         </div>
       </div>
     </section>
@@ -141,15 +140,15 @@
     <section id="dataset" class="page-section">
       <h2 class="section-title">Dataset</h2>
       <div class="text-block">
-        <p>Dos fuentes de datos, tratadas como tramos consecutivos de una misma línea de tiempo:</p>
+        <p>Dos fuentes de datos identificadas, tratadas como tramos consecutivos de una misma línea de tiempo:</p>
       </div>
 
       <!-- GRID DE CARDS: para agregar otra fuente de datos, duplica un .card completo dentro de este div -->
       <div class="card-grid">
         <div class="card">
           <h3>BD_1 — Histórico</h3>
-          <p>30 días (27-may a 25-jun-2026). 61 categorías de producto, dimensiones, stock diario,
-             venta y horas-hombre de packing.</p>
+          <p>30 días (27-may a 25-jun-2026). 60 categorías de producto, dimensiones (largo, ancho, alto), stock diario,
+             venta y horas-hombre de packing. Se tienen items sin descripción</p>
         </div>
         <div class="card">
           <h3>BD_2 — Forecast</h3>
@@ -165,11 +164,13 @@
 
       <!-- ALERTA: usa esta estructura para mostrar hallazgos de calidad de datos.
            Cambia la clase "alerta-amarilla" por "alerta-roja" o "alerta-verde" segun la severidad -->
+      <!--
       <div class="alerta alerta-amarilla">
         <strong>ITEM no es una llave única</strong>
         <p>La columna representa una categoría, no un SKU individual — varias filas comparten
            fecha y categoría. Todo el análisis está a nivel categoría, no producto individual.</p>
       </div>
+      -->
 
       <div class="alerta alerta-amarilla">
         <strong>41 registros con categoría nula (0.8%)</strong>
@@ -196,21 +197,21 @@
     </section>
 
     <!-- ===== SECCION: HALLAZGOS ===== -->
-    <section id="hallazgos" class="page-section">
+    <!-- <section id="hallazgos" class="page-section">
       <h2 class="section-title">Hallazgos</h2>
-
+ -->
       <!-- Se llena automaticamente desde data/resultados.json (bloque "hallazgos") -->
-      <div id="hallazgosContainer">
-        <!-- Las tarjetas de hallazgo se insertan aqui via JavaScript -->
-      </div>
-
+<!--       <div id="hallazgosContainer">
+ -->        <!-- Las tarjetas de hallazgo se insertan aqui via JavaScript -->
+<!--       </div>
+ -->
       <!-- TIMELINE: se llena automaticamente desde el bloque "timeline" del JSON -->
-      <h3 class="subsection-title">Línea de tiempo del hallazgo principal</h3>
+<!--       <h3 class="subsection-title">Línea de tiempo del hallazgo principal</h3>
       <div class="timeline" id="timelineContainer">
-        <!-- Los puntos de la timeline se insertan aqui via JavaScript -->
-      </div>
+ -->        <!-- Los puntos de la timeline se insertan aqui via JavaScript -->
+<!--       </div>
     </section>
-
+ -->
     <!-- ===== SECCION: GRAFICOS ===== -->
     <section id="graficos" class="page-section">
       <h2 class="section-title">Gráficos</h2>
